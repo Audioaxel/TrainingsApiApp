@@ -1,0 +1,2 @@
+- CORS Abchecken (startup -> services und app)
+- Https Redirection
