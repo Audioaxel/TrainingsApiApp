@@ -1,5 +1,5 @@
 using AutoMapper;
-using DbAccessLib.DTOs;
+using DataLib.DTOs;
 using DbAccessLib.Models;
 
 namespace DbAccessLib.Configurations;

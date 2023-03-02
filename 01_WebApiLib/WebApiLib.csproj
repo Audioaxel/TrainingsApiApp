@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../DbAccessLib/DbAccessLib.csproj" />
+    <ProjectReference Include="../21_DbAccessLib/DbAccessLib.csproj" />
+    <ProjectReference Include="../10_DataLib/DataLib.csproj" />
   </ItemGroup>
 
 </Project>

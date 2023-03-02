@@ -1,4 +1,4 @@
-namespace DbAccessLib.DTOs;
+namespace DataLib.DTOs;
 
 public class TestModelDto
 {

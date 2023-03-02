@@ -1,10 +1,11 @@
 using AutoMapper;
+using DataLib;
+using DataLib.DTOs;
 using DbAccessLib.DataAccess;
-using DbAccessLib.DTOs;
 
 namespace DbAccessLib.Data;
 
-public class DatabaseRepository : IDatabaseRepository
+public class DatabaseRepository : IDatabaseRepository<TestModelDto>
 {
     private readonly DatabaseDbContext _context;
     private readonly IMapper _mapper;
@@ -15,7 +16,7 @@ public class DatabaseRepository : IDatabaseRepository
         _mapper = mapper;
     }
 
-    public async Task<TestModelDto> GetTest(int id)
+    public async Task<TestModelDto> Get(int id)
     {
         var x = await _context.TestModels.FindAsync(id);
         return _mapper.Map<TestModelDto>(x);

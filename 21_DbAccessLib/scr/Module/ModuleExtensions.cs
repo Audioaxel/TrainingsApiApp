@@ -1,3 +1,5 @@
+using DataLib;
+using DataLib.DTOs;
 using DbAccessLib.Configurations;
 using DbAccessLib.Data;
 using DbAccessLib.DataAccess;
@@ -14,7 +16,7 @@ public static class ModuleExtensions
         services.AddDbContext<DatabaseDbContext>(options =>
             options.UseSqlServer(connectionString));
 
-        services.AddScoped<IDatabaseRepository, DatabaseRepository>();
+        services.AddScoped<IDatabaseRepository<TestModelDto>, DatabaseRepository>();
         services.AddAutoMapper(typeof(MapperConfig));
     }
 }

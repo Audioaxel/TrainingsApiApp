@@ -1,4 +1,5 @@
-using DbAccessLib.Data;
+using DataLib;
+using DataLib.DTOs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
@@ -12,9 +13,9 @@ internal static class GeneralApi
         app.MapGet(pattern: "/Test/{id}", GetTest);
     }
 
-    private static async Task<IResult> GetTest(IDatabaseRepository data, int id)
+    private static async Task<IResult> GetTest(IDatabaseRepository<TestModelDto> data, int id)
     {
-        var results = await data.GetTest(id);
+        var results = await data.Get(id);
         return results is null ? Results.NotFound() : Results.Ok(results);
     }
 }
