@@ -20,17 +20,23 @@ public static class Startup
 
         string connectionString = builder.Configuration.GetConnectionString("DatabaseTest");
         builder.Services.RegisterDbAccessLibService(connectionString);
+
+        builder.Services.AddCors(options => {
+            options.AddPolicy("AllowAll", policy => policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
+            });
         
-        builder.Services.Configure<ApiOptions>(config.GetSection("ApiOptions"));
-        builder.Services.Configure<DatabaseOptions>(config.GetSection("DatabaseOptions"));
+        // builder.Services.Configure<ApiOptions>(config.GetSection("ApiOptions"));
+        // builder.Services.Configure<DatabaseOptions>(config.GetSection("DatabaseOptions"));
         
 
         var app = builder.Build();
 
-        app.MapGeneralEndpoints();
+        app.MapGeneralEndpoints("/test");
 
         // Testing
         app.MapGet("/", () => connectionString);
+
+        app.UseCors("AllowAll");
 
         app.Run();
     }

@@ -16,7 +16,7 @@ public static class ModuleExtensions
         services.AddDbContext<DatabaseDbContext>(options =>
             options.UseSqlServer(connectionString));
 
-        services.AddScoped<IDatabaseRepository<TestModelDto>, DatabaseRepository>();
+        services.AddScoped<IDatabaseRepository<TestModelDto, CreateTestModelDto>, TestModelData>();
         services.AddAutoMapper(typeof(MapperConfig));
     }
 }
